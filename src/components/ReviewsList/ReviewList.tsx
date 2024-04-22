@@ -1,5 +1,6 @@
 "use client";
 
+import { useApi } from "@/hooks/useApi";
 import { fetchReviews } from "@/services/reviews";
 import { ReviewDto, ReviewsResponse } from "@/types/Review";
 import { useEffect, useState } from "react";
@@ -12,40 +13,51 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
 export const ReviewList = () => {
-  const [reviews, setReviews] = useState<ReviewDto[]>([]);
+  const { data, isError, isLoading } = useApi<ReviewDto[]>(fetchReviews);
 
-  useEffect(() => {
-    // fetch("https://api.airtable.com/v0/appiuwe0WQC3O59Tq/reviews", {
-    //   headers: {
-    //     Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => setReviews(data.records));
+  // const [reviews, setReviews] = useState<ReviewDto[]>([]);
 
-    const loadData = async () => {
-      //   const response = await fetch(`${BASE_URL}/reviews`, {
-      //     headers: {
-      //       Authorization: `Bearer ${API_TOKEN}`,
-      //     },
-      //   });
-      //   const data: ReviewsResponse = await response.json();
-      //   setReviews(data.records);
+  // useEffect(() => {
+  //   // fetch("https://api.airtable.com/v0/appiuwe0WQC3O59Tq/reviews", {
+  //   //   headers: {
+  //   //     Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+  //   //   },
+  //   // })
+  //   //   .then((response) => response.json())
+  //   //   .then((data) => setReviews(data.records));
 
-      const data = await fetchReviews();
-      setReviews(data);
-    };
+  //   const loadData = async () => {
+  //     //   const response = await fetch(`${BASE_URL}/reviews`, {
+  //     //     headers: {
+  //     //       Authorization: `Bearer ${API_TOKEN}`,
+  //     //     },
+  //     //   });
+  //     //   const data: ReviewsResponse = await response.json();
+  //     //   setReviews(data.records);
 
-    loadData();
-  }, []);
+  //     const data = await fetchReviews();
+  //     setReviews(data);
+  //   };
+
+  //   loadData();
+  // }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error...</div>;
+  }
 
   return (
     <div>
-      {reviews.map((review) => (
-        <div key={review.id}>
-          {review.fields.content} | {review.fields.rank}
-        </div>
-      ))}
+      {data &&
+        data.map((review) => (
+          <div key={review.id}>
+            {review.fields.content} | {review.fields.rank}
+          </div>
+        ))}
     </div>
   );
 };
