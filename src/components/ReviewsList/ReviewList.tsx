@@ -3,17 +3,22 @@
 import { useApi } from "@/hooks/useApi";
 import { fetchReviews } from "@/services/reviews";
 import { ReviewDto, ReviewsResponse } from "@/types/Review";
+import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 // const reviews: ReviewDto[] = [
 //   { id: "1234", fields: { content: "one two", rank: 4 } },
 // ];
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
+// const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+// const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
 export const ReviewList = () => {
-  const { data, isError, isLoading, refetch } = useApi(fetchReviews);
+  // const { data, isError, isLoading, refetch } = useApi(fetchReviews);
+  const { data, isError, isLoading, refetch } = useQuery({
+    queryKey: ["reviews"],
+    queryFn: fetchReviews,
+  });
 
   // const [reviews, setReviews] = useState<ReviewDto[]>([]);
 
