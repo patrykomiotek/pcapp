@@ -23,6 +23,6 @@ export const createReview = async (data: CreateReviewDto) => {
       "Content-Type": "application/json",
     },
     method: "POST",
-    body: JSON.stringify({ records: [data] }),
+    body: JSON.stringify({ records: [{ fields: data }] }),
   });
 };
