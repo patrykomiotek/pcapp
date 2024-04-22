@@ -1,9 +1,27 @@
+"use client";
+
+import { FormEventHandler, useRef } from "react";
 import { sendForm } from "./actions";
 
 const CreateReviewPage = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const sendFormAction: FormEventHandler = async (event) => {
+    // "use server";
+    event.preventDefault();
+
+    if (formRef.current) {
+      const data = new FormData(formRef.current);
+
+      const result = await sendForm(data);
+      console.log(result);
+    }
+  };
+
   return (
     <div className="container">
-      <form action={sendForm}>
+      {/* <form action={sendFormAction}> */}
+      <form ref={formRef} onSubmit={sendFormAction}>
         <div>
           <label htmlFor="rank">Rank</label>
           <input

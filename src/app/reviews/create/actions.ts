@@ -25,6 +25,7 @@ export const sendForm = async (data: FormData) => {
     // return {}
   } else {
     console.error(validationResult.error);
+    return { status: "Validation error" };
   }
 
   return null;
