@@ -1,7 +1,7 @@
 "use server";
 
 import { createReview } from "@/services/reviews";
-import { CreateReviewDto } from "@/types/Review";
+import { CreateReviewDto, createReviewSchema } from "@/types/Review";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -11,14 +11,21 @@ export const sendForm = async (data: FormData) => {
     content: data.get("content") as string,
   };
 
-  try {
-    await createReview(review);
-    console.log("success!");
-  } catch (err) {
-    console.error("createReviewError: ", err);
+  const validationResult = createReviewSchema.safeParse(review);
+  if (validationResult.success) {
+    try {
+      await createReview(review);
+      console.log("success!");
+    } catch (err) {
+      console.error("createReviewError: ", err);
+    }
+
+    // revalidatePath("/reviews");
+    redirect("/reviews");
+    // return {}
+  } else {
+    console.error(validationResult.error);
   }
 
-  // revalidatePath("/reviews");
-  redirect("/reviews");
-  // return {}
+  return null;
 };
