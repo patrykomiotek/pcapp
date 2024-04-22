@@ -1,18 +1,8 @@
 "use client";
 
+import { fetchReviews } from "@/services/reviews";
+import { ReviewDto, ReviewsResponse } from "@/types/Review";
 import { useEffect, useState } from "react";
-
-type ReviewDto = {
-  id: string;
-  fields: {
-    content: string;
-    rank: number;
-  };
-};
-
-type ReviewsResponse = {
-  records: ReviewDto[];
-};
 
 // const reviews: ReviewDto[] = [
 //   { id: "1234", fields: { content: "one two", rank: 4 } },
@@ -34,13 +24,16 @@ export const ReviewList = () => {
     //   .then((data) => setReviews(data.records));
 
     const loadData = async () => {
-      const response = await fetch(`${BASE_URL}/reviews`, {
-        headers: {
-          Authorization: `Bearer ${API_TOKEN}`,
-        },
-      });
-      const data: ReviewsResponse = await response.json();
-      setReviews(data.records);
+      //   const response = await fetch(`${BASE_URL}/reviews`, {
+      //     headers: {
+      //       Authorization: `Bearer ${API_TOKEN}`,
+      //     },
+      //   });
+      //   const data: ReviewsResponse = await response.json();
+      //   setReviews(data.records);
+
+      const data = await fetchReviews();
+      setReviews(data);
     };
 
     loadData();
