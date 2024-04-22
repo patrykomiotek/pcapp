@@ -1,8 +1,12 @@
+import { Montserrat } from "next/font/google";
+
 import { NavLink } from "./NavLink";
+
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const NavMenu = () => {
   return (
-    <nav className="container">
+    <nav className={`container mb-4 ${montserrat.className}`}>
       <ul className="flex">
         <li className="mr-4">
           <NavLink href="/">Home</NavLink>
