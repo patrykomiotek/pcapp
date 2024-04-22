@@ -19,7 +19,7 @@ type State<S> =
       isError: true;
     };
 
-export const useApi = <T>(fetcher: Function) => {
+export const useApi = <T>(fetcher: () => Promise<T>) => {
   // const [data, setData] = useState<T>();
   const [state, setState] = useState<State<T>>({
     data: undefined,
@@ -29,6 +29,13 @@ export const useApi = <T>(fetcher: Function) => {
   const { data, isLoading, isError } = state;
 
   const loadData = async () => {
+    // pending
+    setState({
+      data: undefined,
+      isLoading: true,
+      isError: false,
+    });
+
     try {
       const data = await fetcher();
       // setData(data);

@@ -13,7 +13,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
 export const ReviewList = () => {
-  const { data, isError, isLoading } = useApi<ReviewDto[]>(fetchReviews);
+  const { data, isError, isLoading, refetch } = useApi(fetchReviews);
 
   // const [reviews, setReviews] = useState<ReviewDto[]>([]);
 
@@ -52,12 +52,17 @@ export const ReviewList = () => {
 
   return (
     <div>
-      {data &&
-        data.map((review) => (
-          <div key={review.id}>
-            {review.fields.content} | {review.fields.rank}
-          </div>
-        ))}
+      <button
+        onClick={() => refetch()}
+        className="py-2 px-4 bg-blue-600 text-white"
+      >
+        Refetch
+      </button>
+      {data!.map((review) => (
+        <div key={review.id}>
+          {review.fields.content} | {review.fields.rank}
+        </div>
+      ))}
     </div>
   );
 };
