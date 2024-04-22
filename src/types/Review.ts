@@ -6,6 +6,8 @@ export type ReviewDto = {
   };
 };
 
+export type CreateReviewDto = ReviewDto["fields"];
+
 export type ReviewsResponse = {
   records: ReviewDto[];
 };
