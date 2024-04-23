@@ -15,6 +15,9 @@ export const NavMenu = () => {
           <NavLink href="/reviews">Reviews</NavLink>
         </li>
         <li className="mr-4">
+          <NavLink href="/members">Members</NavLink>
+        </li>
+        <li className="mr-4">
           <NavLink href="/about">About</NavLink>
         </li>
         <li className="mr-4">

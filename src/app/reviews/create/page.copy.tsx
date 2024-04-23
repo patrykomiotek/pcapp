@@ -13,8 +13,8 @@ const CreateReviewPage = () => {
     if (formRef.current) {
       const data = new FormData(formRef.current);
 
-      const result = await sendForm(data);
-      console.log(result);
+      // const result = await sendForm(data);
+      // console.log(result);
     }
   };
 
