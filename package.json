@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:turbo": "next dev --turbo",
     "build": "next build",
+    "build:memory": "next build --experimental-debug-memory-usage",
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
