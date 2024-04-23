@@ -1,6 +1,7 @@
 import { Montserrat } from "next/font/google";
 
 import { NavLink } from "./NavLink";
+import { ThemeSwitcher } from "../ThemeSwitcher";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export const NavMenu = () => {
           <NavLink href="/contact">Contact</NavLink>
         </li>
       </ul>
+      <ThemeSwitcher />
     </nav>
   );
 };

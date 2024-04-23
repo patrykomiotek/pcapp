@@ -1,5 +1,6 @@
 "use client";
 
+import { ThemeProvider } from "next-themes";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
@@ -12,7 +13,7 @@ const queryClient = new QueryClient();
 export const Providers = ({ children }: Props) => {
   return (
     <QueryClientProvider client={queryClient}>
-      {children}
+      <ThemeProvider attribute="class">{children}</ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
