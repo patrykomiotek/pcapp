@@ -30,6 +30,18 @@ export const fetchMembers = async () => {
   // return data.records;
 };
 
+export const fetchMembersCount = async () => {
+  // throw new Error("!!!");
+  const response = await fetch(`${BASE_URL}/members`, {
+    headers: {
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+  });
+  const data: MembersResponse = await response.json();
+
+  return data.records.length;
+};
+
 export const fetchMember = async (publicId: MemberDto["id"]) => {
   const response = await fetch(`${BASE_URL}/members/${publicId}`, {
     headers: {
