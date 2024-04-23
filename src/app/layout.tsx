@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { NavMenu } from "@/ui";
 import { Providers } from "./Providers";
 
 const inter = Inter({ subsets: ["latin"] });
+
+// const myFont = localFont({
+//   src: "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap",
+// });
+// myFont.className
 
 export const metadata: Metadata = {
   title: "Create Next App",
