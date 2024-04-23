@@ -14,7 +14,7 @@ export const CreateReviewForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<CreateReviewDto>({
     resolver: zodResolver(createReviewSchema),
     // reValidateMode: "onSubmit",
@@ -35,20 +35,25 @@ export const CreateReviewForm = () => {
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit(handleClientForm)}>
-      <Input
-        label="Rank"
-        {...register("rank", { valueAsNumber: true })}
-        type="number"
-        defaultValue={0}
-        error={errors.rank}
-      />
-      <Textarea
-        label="Content"
-        {...register("content")}
-        error={errors.content}
-      />
-      <Button type="submit" label="Send" />
-    </form>
+    <>
+      {isSubmitting && <p>Submitting...</p>}
+      <form ref={formRef} onSubmit={handleSubmit(handleClientForm)}>
+        <Input
+          label="Rank"
+          {...register("rank", { valueAsNumber: true })}
+          type="number"
+          defaultValue={0}
+          error={errors.rank}
+          disabled={isSubmitting}
+        />
+        <Textarea
+          label="Content"
+          {...register("content")}
+          error={errors.content}
+          disabled={isSubmitting}
+        />
+        <Button type="submit" label="Send" disabled={isSubmitting} />
+      </form>
+    </>
   );
 };
