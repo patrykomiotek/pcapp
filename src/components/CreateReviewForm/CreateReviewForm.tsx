@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { sendForm } from "@/app/reviews/create/actions";
 import { FormEventHandler, useRef } from "react";
 import { createReviewSchema, type CreateReviewDto } from "@/types/Review";
+import { Button } from "@/ui/Button";
 
 export const CreateReviewForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -55,9 +56,10 @@ export const CreateReviewForm = () => {
           <p className="text-red-400">{errors.content.message}</p>
         )}
       </div>
-      <button type="submit" className="py-2 px-4 bg-blue-600 text-white">
+      {/* <button type="submit" className="py-2 px-4 bg-blue-600 text-white">
         Send
-      </button>
+      </button> */}
+      <Button type="submit" label="Send" />
     </form>
   );
 };
