@@ -70,6 +70,7 @@ export default async function MemberPage({ params }: Props) {
       <p>
         {member.fields.name} {member.fields.role}
       </p>
+      {/* {notFound && <MemberClientCOmponent id={publicId} />} */}
     </div>
   );
 }
