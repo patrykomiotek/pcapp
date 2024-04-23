@@ -24,8 +24,10 @@ export const NavMenu = () => {
         <li className="mr-4">
           <NavLink href="/contact">Contact</NavLink>
         </li>
+        <li className="mr-4">
+          <ThemeSwitcher />
+        </li>
       </ul>
-      <ThemeSwitcher />
     </nav>
   );
 };
