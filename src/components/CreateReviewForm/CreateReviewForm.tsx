@@ -6,6 +6,8 @@ import { sendForm } from "@/app/reviews/create/actions";
 import { FormEventHandler, useRef } from "react";
 import { createReviewSchema, type CreateReviewDto } from "@/types/Review";
 import { Button } from "@/ui/Button";
+import { Input } from "@/ui/Input";
+import { Textarea } from "@/ui/Textarea";
 
 export const CreateReviewForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -34,31 +36,18 @@ export const CreateReviewForm = () => {
 
   return (
     <form ref={formRef} onSubmit={handleSubmit(handleClientForm)}>
-      <div className="block mb-4">
-        <label htmlFor="rank">Rank</label>
-        <input
-          id="rank"
-          type="number"
-          className="border-2 border-slate-900 ml-2"
-          defaultValue={0}
-          {...register("rank", { valueAsNumber: true })}
-        />
-        {errors.rank && <p className="text-red-400">{errors.rank.message}</p>}
-      </div>
-      <div className="block mb-4">
-        <label htmlFor="content">Content</label>
-        <textarea
-          id="content"
-          {...register("content")}
-          className="border-2 border-slate-900 ml-2"
-        />
-        {errors.content && (
-          <p className="text-red-400">{errors.content.message}</p>
-        )}
-      </div>
-      {/* <button type="submit" className="py-2 px-4 bg-blue-600 text-white">
-        Send
-      </button> */}
+      <Input
+        label="Rank"
+        {...register("rank", { valueAsNumber: true })}
+        type="number"
+        defaultValue={0}
+        error={errors.rank}
+      />
+      <Textarea
+        label="Content"
+        {...register("content")}
+        error={errors.content}
+      />
       <Button type="submit" label="Send" />
     </form>
   );
