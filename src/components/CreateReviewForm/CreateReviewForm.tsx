@@ -23,14 +23,11 @@ export const CreateReviewForm = () => {
   const handleClientForm: SubmitHandler<CreateReviewDto> = async (data) => {
     // "use server";
     // event.preventDefault();
-
     // if (formRef.current) {
     //   const data = new FormData(formRef.current);
-
     //   const result = await sendForm(data);
     //   console.log(result);
     // }
-
     const result = await sendForm(data);
   };
 

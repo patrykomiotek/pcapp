@@ -25,4 +25,4 @@ export const validationSchema = z.object({
 // };
 
 export type MembersResponse = z.infer<typeof validationSchema>;
-export type MemberDto = MembersResponse["records"];
+export type MemberDto = MembersResponse["records"][0] & { error?: string };

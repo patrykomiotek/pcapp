@@ -1,5 +1,12 @@
 import { fetchMembers } from "@/services/members";
 import { Header } from "@/ui";
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Members",
+  description: "Check our company members",
+};
 
 export default async function MembersPage() {
   const data = await fetchMembers();
@@ -11,7 +18,10 @@ export default async function MembersPage() {
         {data.map((member) => (
           <div key={member.id}>
             <p>
-              {member.fields.name}, {member.fields.role}
+              <Link href={`/members/${member.id}`} className="text-blue-700">
+                {member.fields.name}
+              </Link>
+              , {member.fields.role}
             </p>
           </div>
         ))}

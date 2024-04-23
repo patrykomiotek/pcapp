@@ -1,5 +1,5 @@
 import { ZodError, z } from "zod";
-import { MembersResponse, validationSchema } from "@/types/Member";
+import { MemberDto, MembersResponse, validationSchema } from "@/types/Member";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
@@ -28,4 +28,15 @@ export const fetchMembers = async () => {
   }
 
   // return data.records;
+};
+
+export const fetchMember = async (publicId: MemberDto["id"]) => {
+  const response = await fetch(`${BASE_URL}/members/${publicId}`, {
+    headers: {
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+  });
+  const data: MemberDto = await response.json();
+
+  return data;
 };
