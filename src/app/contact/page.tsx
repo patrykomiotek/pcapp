@@ -1,5 +1,11 @@
+import { AuthInfo } from "@/components/Auth/AuthInfo";
 import { Header } from "@/ui";
 
 export default function ContactPage() {
-  return <Header>Contact</Header>;
+  return (
+    <div>
+      <Header>Contact</Header>
+      <AuthInfo />
+    </div>
+  );
 }
