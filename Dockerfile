@@ -1,4 +1,4 @@
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -44,7 +44,7 @@ FROM base AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
-ENV DATABASE_URL $database-url
+#ENV DATABASE_URL $database-url
 ENV NEXT_PUBLIC_BASE_URL $airtable-base-url
 ENV NEXT_PUBLIC_API_TOKEN $airtable-token
 # Uncomment the following line in case you want to disable telemetry during runtime.
