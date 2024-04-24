@@ -19,10 +19,13 @@ export const NavMenu = () => {
           <NavLink href="/members">Members</NavLink>
         </li>
         <li className="mr-4">
-          <NavLink href="/about">About</NavLink>
+          <NavLink href="/about-us">About</NavLink>
         </li>
         <li className="mr-4">
-          <NavLink href="/contact">Contact</NavLink>
+          <NavLink href="/contact-us">Contact</NavLink>
+        </li>
+        <li className="mr-4">
+          <NavLink href="/dashboard">Dashboard</NavLink>
         </li>
         <li className="mr-4">
           <ThemeSwitcher />

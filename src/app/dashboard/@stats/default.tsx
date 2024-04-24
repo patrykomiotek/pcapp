@@ -1,3 +1,3 @@
 export default function DefaultStats() {
-  return <p>Default...</p>;
+  return <p>Default for stats...</p>;
 }
