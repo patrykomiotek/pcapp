@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-app-deployment
+spec:
+  replicas: 1 # Number of replicas (pods) to maintain
+  selector:
+    matchLabels:
+      app: nextjs-app
+  template:
+    metadata:
+      labels:
+        app: nextjs-app
+    spec:
+      containers:
+        - name: nextjs-app
+          image: europe-central2-docker.pkg.dev/web-apps-jobs/pcapp/pcapp:latest # Host/project-id/repository/image:tag
+          ports:
+            - containerPort: 3000

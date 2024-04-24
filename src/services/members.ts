@@ -1,4 +1,5 @@
 import { ZodError, z } from "zod";
+import { unstable_noStore as noStore } from "next/cache";
 import {
   CreateMemberDto,
   MemberDto,
@@ -10,11 +11,18 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
 export const fetchMembers = async (query: string | null) => {
+  // noStore();
+
   // await fetch('/api/reviews) -> fetch(`${BASE_URL}/reviews`
   const response = await fetch(`${BASE_URL}/members`, {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
     },
+    // cache: "no-cache",
+    // next: {
+    //   revalidate: 3600,
+    //   tags: ['members']
+    // }
   });
   const data: MembersResponse = await response.json();
   // console.log({ data });
