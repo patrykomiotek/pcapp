@@ -24,12 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <Providers>
-          <NavMenu />
-          {children}
-        </Providers>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

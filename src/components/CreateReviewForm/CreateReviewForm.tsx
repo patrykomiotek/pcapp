@@ -2,7 +2,7 @@
 
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { sendForm } from "@/app/reviews/create/actions";
+import { sendForm } from "@/app/(public)/reviews/create/actions";
 import { FormEventHandler, useRef } from "react";
 import { createReviewSchema, type CreateReviewDto } from "@/types/Review";
 import { Button } from "@/ui/Button";
