@@ -14,8 +14,10 @@ export default function PublicLayout({
 }>) {
   return (
     <Providers>
-      <NavMenu />
-      {children}
+      <div className="container p-2">
+        <NavMenu />
+        {children}
+      </div>
     </Providers>
   );
 }

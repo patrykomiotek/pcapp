@@ -1,4 +1,5 @@
 import type { ComponentProps } from "react";
+import { cn } from "../utils/cn";
 
 // type Props = {
 //   children: string;
@@ -6,9 +7,9 @@ import type { ComponentProps } from "react";
 
 type Props = ComponentProps<"h1">;
 
-export const Header = ({ children, ...rest }: Props) => {
+export const Header = ({ children, className, ...rest }: Props) => {
   return (
-    <h1 className="text-2xl font-semibold" {...rest}>
+    <h1 className={cn("text-2xl font-semibold", className)} {...rest}>
       {children}
     </h1>
   );
