@@ -8,6 +8,7 @@ type ContextType = {
 };
 
 const AuthContext = createContext<ContextType | null>(null);
+AuthContext.displayName = "AuthContext";
 
 export const useAuthContext = () => {
   const context = useContext(AuthContext);

@@ -4,7 +4,7 @@ import { MemberDto, MembersResponse, validationSchema } from "@/types/Member";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
-export const fetchMembers = async () => {
+export const fetchMembers = async (query: string | null) => {
   // await fetch('/api/reviews) -> fetch(`${BASE_URL}/reviews`
   const response = await fetch(`${BASE_URL}/members`, {
     headers: {
@@ -18,6 +18,12 @@ export const fetchMembers = async () => {
   try {
     result = validationSchema.parse(data); // safeParse
     // console.log("result in success: ", result);
+
+    if (query) {
+      return result.records.filter((elem) =>
+        elem.fields.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+      );
+    }
     return result.records;
   } catch (error) {
     if (error instanceof ZodError) {

@@ -1,8 +1,12 @@
 import { fetchMembers } from "@/services/members";
 import Link from "next/link";
 
-export const MembersList = async () => {
-  const members = await fetchMembers();
+type Props = {
+  query: string | null;
+};
+
+export const MembersList = async ({ query }: Props) => {
+  const members = await fetchMembers(query);
 
   return (
     <div>
