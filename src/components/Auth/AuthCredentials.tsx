@@ -9,7 +9,7 @@ export const AuthCredentials = () => {
   return (
     <div>
       <h3>Auth credentials</h3>
-      <p>Is logged in: {isLogged ? "Yes" : "No"}</p>
+      <p>Is logged in: {isLogged ? "Yes" : "No"} lorem</p>
       <Button label="Toggle" onClick={toggle} />
     </div>
   );
