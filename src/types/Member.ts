@@ -26,3 +26,10 @@ export const validationSchema = z.object({
 
 export type MembersResponse = z.infer<typeof validationSchema>;
 export type MemberDto = MembersResponse["records"][0] & { error?: string };
+
+export const createValidationSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  role: z.string().min(1, "Role is required"),
+});
+
+export type CreateMemberDto = z.infer<typeof createValidationSchema>;

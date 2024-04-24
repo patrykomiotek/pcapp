@@ -8,4 +8,5 @@ export * from "./Input";
 export * from "./Text";
 export * from "./Textarea";
 export * from "./ThemeSwitcher";
+export * from "./Toast";
 export * from "./utils/cn";

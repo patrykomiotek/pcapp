@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { NavMenu } from "@/ui";
+import { NavMenu, Toast } from "@/ui";
 import { Providers } from "../Providers";
 
 export const metadata: Metadata = {
@@ -14,6 +14,7 @@ export default function PublicLayout({
 }>) {
   return (
     <Providers>
+      <Toast />
       <div className="container p-2">
         <NavMenu />
         {children}

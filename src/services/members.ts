@@ -1,5 +1,10 @@
 import { ZodError, z } from "zod";
-import { MemberDto, MembersResponse, validationSchema } from "@/types/Member";
+import {
+  CreateMemberDto,
+  MemberDto,
+  MembersResponse,
+  validationSchema,
+} from "@/types/Member";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
@@ -57,4 +62,17 @@ export const fetchMember = async (publicId: MemberDto["id"]) => {
   const data: MemberDto = await response.json();
 
   return data;
+};
+
+export const createMember = async (data: CreateMemberDto) => {
+  // TODO: you can use axios
+  // return api.post('/members', parseAirtable(data))
+  return await fetch(`${BASE_URL}/members`, {
+    headers: {
+      Authorization: `Bearer ${API_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({ records: [{ fields: data }] }), // TODO: refactor
+  });
 };

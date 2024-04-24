@@ -28,6 +28,11 @@ export default async function MembersPage({ searchParams }: Props) {
   return (
     <div>
       <Header>Members</Header>
+      <div className="block my-2">
+        <Link href="/members/create" className="text-blue-600">
+          Create
+        </Link>
+      </div>
 
       {/* <MembersCountClient /> */}
 
